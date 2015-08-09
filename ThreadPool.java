@@ -1,23 +1,19 @@
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.List;
 
 public class ThreadPool {
 	public static void main(String[] args) {
 		ExecutorService executor = Executors.newFixedThreadPool(4);
-		ArrayList<String> list;
+		List<String> list;
 
 		try {
-			Scanner s = new Scanner(new File("hosts.txt"));
-			list = new ArrayList<String>();
-			while (s.hasNext()) {
-				list.add(s.next());
-			}
-			s.close();
-		} catch (FileNotFoundException ex) {
+			list = Files.readAllLines(new File("hosts.txt").toPath(), Charset.defaultCharset());
+		} catch (IOException ex) {
 			System.out.println(ex);
 			return;
 		}
