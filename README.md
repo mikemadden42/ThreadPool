@@ -1,11 +1,15 @@
 # ThreadPool
 Simple Java thread pool
 
-## Build instructions
+## Manual build instructions
 ```bash
-rm -f *.class *.jar
 echo 'Main-Class: ThreadPool' > Manifest.txt
 javac -g:none *.java
 jar cvfm ThreadPool.jar Manifest.txt *.class
+java -jar ThreadPool.jar
+```
+## Automatic build instructions
+```bash
+ant
 java -jar ThreadPool.jar
 ```
