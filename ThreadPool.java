@@ -8,7 +8,8 @@ import java.util.List;
 
 public class ThreadPool {
 	public static void main(String[] args) {
-		ExecutorService executor = Executors.newFixedThreadPool(4);
+		int cores = Runtime.getRuntime().availableProcessors();
+		ExecutorService executor = Executors.newFixedThreadPool(cores);
 		List<String> list;
 
 		try {
@@ -29,4 +30,3 @@ public class ThreadPool {
 		}
 	}
 }
-
